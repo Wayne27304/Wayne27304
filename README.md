@@ -3,10 +3,7 @@
 # ⚡ Hi, I'm Wayne ⚡
 ### 💻 Developer | 🎮 Server Administrator
 
-<br>
-
-[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Wayne27304&show_icons=true&theme=tokyonight&count_private=true)](https://github.com/Wayne27304)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Wayne27304y&layout=compact&theme=tokyonight)](https://github.com/Wayne27304)
+<br
 
 </div>
 
