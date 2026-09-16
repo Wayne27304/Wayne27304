@@ -3,8 +3,6 @@
 # ⚡ Hi, I'm Wayne ⚡
 ### 💻 Developer | 🎮 Server Administrator
 
-<br
-
 </div>
 
 ---
