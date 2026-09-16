@@ -5,8 +5,8 @@
 
 <br>
 
-[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=kkuu4980-a11y&show_icons=true&theme=tokyonight&count_private=true)](https://github.com/kkuu4980-a11y)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=kkuu4980-a11y&layout=compact&theme=tokyonight)](https://github.com/kkuu4980-a11y)
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Wayne27304&show_icons=true&theme=tokyonight&count_private=true)](https://github.com/Wayne27304)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Wayne27304y&layout=compact&theme=tokyonight)](https://github.com/Wayne27304)
 
 </div>
 
@@ -33,8 +33,8 @@
 
 ## 🚀 About Me (關於我)
 
-* 🔭 **目前專注於**：玩玩Roblox等遊戲 或是打籃球。
-* ⚙️ **伺服器運維經驗**：常常使用 Ubuntu 環境，也會使用 Docker 佈署運維面板與網路穿透隧道（Cloudflare Tunnel），管理過高可用性的遊戲伺服器基礎設施。
+* 🔭 **目前專注於**：學習Python . 籃球等。
+* ⚙️ **伺服器運維經驗**：常常使用 Ubuntu 環境，也會使用 Docker 佈署運維面板與網路穿透隧道，管理過高可用性的遊戲伺服器基礎設施。
 * 📸 **其他興趣**：除了敲鍵盤，我也是一名熱愛捕捉瞬間的攝影師。
 
 ---
