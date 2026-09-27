@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayne</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://bio.wayne227304.dpdns.org/c4be9961-c8a2-42a8-8853-889d92b74374.webp') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 暗色遮罩 */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.45);
+            z-index: 1;
+        }
+
+        /* 下雨特效 */
+        #rain-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .raindrop {
+            position: absolute;
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.6));
+            width: 1px;
+            height: 22px;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-20px); }
+            100% { transform: translateY(102vh); }
+        }
+
+        /* ===== 進場畫面 ===== */
+        #entryScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        #entryScreen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .entry-box {
+            text-align: center;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .entry-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: #ffffff;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+
+        .entry-sub {
+            font-size: 0.95rem;
+            color: #cfcfcf;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.75; transform: scale(0.97); }
+        }
+
+        /* 主容器初始隱藏，進場後才淡入 */
+        .wrapper {
+            position: relative;
+            z-index: 3;
+            width: 520px;
+            max-height: 92vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 12px;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .wrapper.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wrapper::-webkit-scrollbar {
+            width: 4px;
+        }
+        .wrapper::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        /* 毛玻璃卡片樣式 */
+        .card {
+            background: rgba(18, 18, 26, 0.68);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 22px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55);
+            text-align: center;
+        }
+
+        /* 個人主體資訊 */
+        .main-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffaa00;
+            margin: 0 0 8px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .bio {
+            font-size: 1.05rem;
+            color: #d8d8d8;
+            margin: 0 0 14px 0;
+        }
+
+        .location {
+            font-size: 0.95rem;
+            color: #9a9a9a;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* Discord 狀態微縮區 */
+        .discord-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .discord-avatar-container {
+            position: relative;
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+        }
+
+        .discord-avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .status-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border: 3px solid #12121a;
+        }
+
+        .online { background-color: #23a55a; }
+        .idle { background-color: #f0b232; }
+        .dnd { background-color: #f23f43; }
+        .offline { background-color: #80848e; }
+
+        .discord-info {
+            overflow: hidden;
+        }
+
+        .discord-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #ffffff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .discord-activity {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-top: 3px;
+        }
+
+        /* 社交帳戶一排圖示區 */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-top: 5px;
+        }
+
+        .social-icon-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .social-icon-btn:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .social-icon-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: #ffffff;
+        }
+
+        /* 音樂播放器卡片 */
+        .music-card {
+            background: rgba(18, 18, 26, 0.68);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 18px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.45);
+        }
+
+        .music-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .music-cover {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .music-meta {
+            flex-grow: 1;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .music-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .music-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .time-text {
+            font-size: 0.8rem;
+            color: #9a9a9a;
+            width: 35px;
+            text-align: center;
+        }
+
+        .progress-bar-container {
+            flex-grow: 1;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #ffffff;
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0;
+            opacity: 0.8;
+            transition: 0.2s;
+        }
+
+        .icon-btn:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* 專案按鈕 */
+        .project-btn {
+            background: rgba(18, 18, 26, 0.68);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 16px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: #ffffff;
+            transition: 0.2s;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.45);
+        }
+
+        .project-btn:hover {
+            background: rgba(28, 28, 40, 0.85);
+            border-color: rgba(255, 255, 255, 0.22);
+            transform: translateY(-2px);
+        }
+
+        .project-info {
+            text-align: left;
+        }
+
+        .project-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .project-desc {
+            font-size: 0.85rem;
+            color: #aaaaaa;
+            margin-top: 3px;
+        }
+
+        .project-arrow {
+            font-size: 1.1rem;
+            color: #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+    <div id="rain-container"></div>
+
+    <!-- 點擊進入畫面 -->
+    <div id="entryScreen">
+        <div class="entry-box">
+            <div class="entry-title">Wayne</div>
+            <div class="entry-sub">Click to Enter</div>
+        </div>
+    </div>
+
+    <div class="wrapper" id="wrapper">
+        <!-- 主個人名片卡片 -->
+        <div class="card">
+            <h1 class="main-title" id="mainUsername">Wayne</h1>
+            <p class="bio">Hello, the world doesn't know me</p>
+            <div class="location">
+                📍 <span>Taiwan</span>
+            </div>
+
+            <!-- Discord 狀態微縮區 -->
+            <div class="discord-box">
+                <div class="discord-avatar-container">
+                    <img id="avatar" class="discord-avatar" src="" alt="Avatar">
+                    <div id="statusDot" class="status-dot offline"></div>
+                </div>
+                <div class="discord-info">
+                    <div id="discordName" class="discord-name">載入中...</div>
+                    <div id="discordActivity" class="discord-activity">載入中...</div>
+                </div>
+            </div>
+
+            <!-- 社交帳戶按鈕群組（一排小圖示） -->
+            <div class="social-icons">
+                <!-- Discord -->
+                <a href="https://discord.com/users/1515607700816265316" target="_blank" class="social-icon-btn" title="Discord">
+                    <svg viewBox="0 0 127.14 96.36">
+                        <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.63-27.29-4.5-51.19-18.9-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5.18-12.72,11.45-12.72S53.9,46,53.88,53,48.71,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5.18-12.72,11.44-12.72S96.15,46,96.13,53,91,65.69,84.69,65.69Z"/>
+                    </svg>
+                </a>
+                <!-- GitHub -->
+                <a href="https://github.com/Wayne27304" target="_blank" class="social-icon-btn" title="GitHub">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                </a>
+                <!-- Threads (脆) -->
+                <a href="https://www.threads.com/@wayne27304" target="_blank" class="social-icon-btn" title="Threads">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17.653 14.542c-.297.042-.602.064-.913.064-3.185 0-5.472-2.115-5.472-5.748 0-3.376 2.155-5.59 5.367-5.59 2.508 0 4.141 1.284 4.546 3.495h2.152c-.443-3.328-2.924-5.322-6.698-5.322-4.49 0-7.616 3.092-7.616 7.502 0 4.296 2.973 7.426 7.585 7.426 1.765 0 3.298-.49 4.394-1.423l-1.395-1.404zM12.186 8.672c-1.258.118-2.185.922-2.223 2.148h4.48c-.068-1.226-.96-2.03-2.257-2.148zm4.646 3.34c-.168 1.488-1.042 3.104-2.881 3.104-1.785 0-2.868-1.252-2.868-3.565 0-2.313 1.083-3.565 2.868-3.565 1.34 0 2.213.626 2.585 1.848h2.09c-.443-2.455-2.285-3.692-4.675-3.692-3.085 0-5.112 2.143-5.112 5.409 0 3.266 2.027 5.41 5.112 5.41 2.657 0 4.417-1.455 4.795-3.865h-2.012z"/>
+                    </svg>
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/wayne27304/" target="_blank" class="social-icon-btn" title="Instagram">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <!-- Roblox -->
+                <a href="https://www.roblox.com/users/5564547574/profile" target="_blank" class="social-icon-btn" title="Roblox">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M18.926 0L0 18.258 5.074 24 24 5.742 18.926 0zm-3.67 11.233l-3.327 3.253-1.678-4.887 5.005 1.634z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- 音樂播放器卡片 -->
+        <div class="music-card">
+            <div class="music-top">
+                <img src="https://bio.wayne227304.dpdns.org/92072e41-9eaf-40c3-8976-4e0e0d9d9da6.webp" class="music-cover" alt="Cover">
+                <div class="music-meta">
+                    <div class="music-title">かたわれ時</div>
+                </div>
+                <button class="icon-btn" id="playBtn" onclick="togglePlay()" style="font-size: 1.2rem; width: 32px; height: 32px;">❚❚</button>
+            </div>
+            <div class="music-controls">
+                <span class="time-text" id="currentTime">0:00</span>
+                <div class="progress-bar-container" id="progressContainer" onclick="seekAudio(event)">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <span class="time-text" id="durationTime">0:00</span>
+            </div>
+        </div>
+
+        <!-- 專案按鈕：Wayne Free Host -->
+        <a href="http://host.wayne227304.dpdns.org" target="_blank" class="project-btn">
+            <div class="project-info">
+                <div class="project-name">Wayne Free Host</div>
+                <div class="project-desc">免費伺服器主機託管服務</div>
+            </div>
+            <div class="project-arrow">➔</div>
+        </a>
+    </div>
+
+    <audio id="bgm" src="https://bio.wayne227304.dpdns.org/e19d93f3-ab05-4a7f-b4a5-4e3a908f85aa.mp3" loop></audio>
+
+    <script>
+        // 下雨特效
+        const rainContainer = document.getElementById('rain-container');
+        for (let i = 0; i < 60; i++) {
+            const drop = document.createElement('div');
+            drop.classList.add('raindrop');
+            drop.style.left = `${Math.random() * 100}vw`;
+            drop.style.top = `${Math.random() * -100}px`;
+            drop.style.animationDuration = `${0.6 + Math.random() * 0.8}s`;
+            drop.style.animationDelay = `${Math.random() * 2}s`;
+            rainContainer.appendChild(drop);
+        }
+
+        // Lanyard Discord 狀態
+        const DISCORD_ID = "1515607700816265316";
+        async function fetchDiscordStatus() {
+            try {
+                const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
+                const data = await response.json();
+                if (data.success) {
+                    const { discord_user, discord_status, activities } = data.data;
+                    document.getElementById("mainUsername").innerText = discord_user.display_name || discord_user.username;
+                    document.getElementById("discordName").innerText = discord_user.display_name || discord_user.username;
+                    
+                    const avatarUrl = `https://cdn.discordapp.com/avatars/${discord_user.id}/${discord_user.avatar}.png`;
+                    document.getElementById("avatar").src = avatarUrl;
+                    document.getElementById("statusDot").className = `status-dot ${discord_status}`;
+
+                    const actBox = document.getElementById("discordActivity");
+                    if (activities && activities.length > 0) {
+                        const game = activities.find(a => a.type === 0);
+                        const custom = activities.find(a => a.type === 4);
+                        if (game) {
+                            actBox.innerText = `Playing ${game.name}`;
+                        } else if (custom && custom.state) {
+                            actBox.innerText = custom.state;
+                        } else {
+                            actBox.innerText = "Online";
+                        }
+                    } else {
+                        actBox.innerText = "Offline";
+                    }
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+        fetchDiscordStatus();
+        setInterval(fetchDiscordStatus, 10000);
+
+        // 音樂播放器邏輯
+        const bgm = document.getElementById('bgm');
+        const playBtn = document.getElementById('playBtn');
+        const progressBar = document.getElementById('progressBar');
+        const currentTimeEl = document.getElementById('currentTime');
+        const durationTimeEl = document.getElementById('durationTime');
+        bgm.volume = 0.4;
+
+        function togglePlay() {
+            if (bgm.paused) {
+                bgm.play();
+                playBtn.innerText = "❚❚";
+            } else {
+                bgm.pause();
+                playBtn.innerText = "▶";
+            }
+        }
+
+        bgm.addEventListener('loadedmetadata', () => {
+            durationTimeEl.innerText = formatTime(bgm.duration);
+        });
+
+        bgm.addEventListener('timeupdate', () => {
+            if (!isNaN(bgm.duration)) {
+                const percent = (bgm.currentTime / bgm.duration) * 100;
+                progressBar.style.width = `${percent}%`;
+                currentTimeEl.innerText = formatTime(bgm.currentTime);
+            }
+        });
+
+        function seekAudio(event) {
+            const container = document.getElementById('progressContainer');
+            const rect = container.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            const width = rect.width;
+            if (!isNaN(bgm.duration)) {
+                bgm.currentTime = (clickX / width) * bgm.duration;
+            }
+        }
+
+        function formatTime(seconds) {
+            const m = Math.floor(seconds / 60);
+            const s = Math.floor(seconds % 60);
+            return `${m}:${s < 10 ? '0' : ''}${s}`;
+        }
+
+        // ===== 點擊進入邏輯 =====
+        const entryScreen = document.getElementById('entryScreen');
+        const wrapper = document.getElementById('wrapper');
+
+        entryScreen.addEventListener('click', () => {
+            entryScreen.classList.add('hidden');
+            wrapper.classList.add('show');
+
+            // 進入後嘗試播放音樂
+            bgm.play().then(() => {
+                playBtn.innerText = "❚❚";
+            }).catch(() => {
+                playBtn.innerText = "▶";
+            });
+        }, { once: true });
+    </script>
+</body>
+</html>
