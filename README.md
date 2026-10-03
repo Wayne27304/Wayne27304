@@ -39,5 +39,5 @@
 
 
 <div align="center">
-  <img src="https://komarev.com/ghpvc/?username=kkuu4980-a11y&color=dc143c" alt="Profile Views" />
+  <img src="(https://count.getloli.com/@Wayne27304?theme=booru-smtg&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=1)" alt="Profile Views" />
 </div>
