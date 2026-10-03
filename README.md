@@ -23,13 +23,13 @@
 ## 🚀 About Me (關於我)
 
 <p align="left">
-👋 嗨，我是 <b>Wayne (劉維維)</b>！一名熱衷於伺服器架設、自動化腳本與 Web 開發的學生開發者。
+👋 嗨，我是 <b>Wayne</b>！一名熱衷於伺服器架設、自動化腳本與 Web 開發的學生開發者。
 </p>
 
-* 🔭 **目前專注**：深入學習 Python 開發、Flask 後端架構與網路自動化技術。
-* ⚙️ **伺服器運維**：熟練操作 **Ubuntu Linux** 環境、**Docker** 容器化部署、Pterodactyl 伺服器面板，以及 **Cloudflare Zero Trust / Playit.gg** 網路穿透與 DDoS 防護。
-* 🎮 **社群與遊戲**：具備高可用性 Minecraft (Paper / Purpur) 伺服器架構經驗，並開發支援 Modal 互動與 Select Menu 的 Discord 機器人。
-* 📸 **戶外與興趣**：除了在終端機敲代碼，也是一名熱愛用鏡頭捕捉瞬間的攝影師與籃球愛好者 🏀。
+* 🔭 **目前專注**：正在學習 Python 開發、Flask 後端架構與網路自動化技術。
+* ⚙️ **伺服器運維**：用過 **Ubuntu Linux** 環境、**Docker** 容器化部署、Pterodactyl 伺服器面板，但幾乎不會ovo
+* 🎮 **社群與遊戲**：具備高可用性 Minecraft (Paper / Purpur) 伺服器架構經驗，並架設過discord機器人
+* 📸 **戶外與興趣**：除了在終端機敲代碼，也是一名熱愛用鏡頭捕捉瞬間的攝影師與籃球愛好者 。
 
 ---
 
