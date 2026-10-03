@@ -2,7 +2,7 @@
 
 <!-- 動態打字效果與標題 Header -->
 <a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&pause=1000&color=38BDF8&center=true&vcenter=true&width=500&height=50&lines=%E2%9A%A1+Hi%2C+I'm+Wayne+(%E5%8A%89%E7%B6%AD%E7%B6%AD)+%E2%9A%A1;💻+Python+%26+Web+Developer;🎮+Linux+%26+Server+Administrator;📸+Photographer+%26+Creator" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&pause=1000&color=38BDF8&center=true&vcenter=true&width=500&height=50&lines=Hi%2C+I'm+Wayne!;Python+%26+Web+Developer;Linux+%26+Server+Administrator;Photographer+%26+Creator" alt="Typing SVG" />
 </a>
 
 <p align="center">
