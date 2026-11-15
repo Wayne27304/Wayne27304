@@ -27,7 +27,7 @@
 * **伺服器運維**：用過 **Ubuntu Linux** 環境、**Docker** 容器化部署、Pterodactyl 伺服器面板，但幾乎不會用ovo
 * **社群與遊戲**：具備高可用性 Minecraft  伺服器架構經驗，並架設過discord機器人
 * **個人資料** : https://bio.wayne227304.dpdns.org
-
+* **免費託管** : https://wayhost.cc.cd
 
 ---
 
