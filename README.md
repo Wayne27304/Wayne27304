@@ -26,7 +26,7 @@
 * **目前專注**：正在學習 Python，買了 "Python程式設計從入門到進階應用"
 * **伺服器運維**：用過 **Ubuntu Linux** 環境、**Docker** 容器化部署、Pterodactyl 伺服器面板，但幾乎不會用ovo
 * **社群與遊戲**：具備高可用性 Minecraft  伺服器架構經驗，並架設過discord機器人
-* **個人資料** : https://bio.wayne227304.dpdns.org
+* **個人資料** : https://wayne227304.dpdns.org
 * **免費託管** : https://wayhost.cc.cd
 
 ---
