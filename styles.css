@@ -14,7 +14,7 @@
   --yellow-soft: #fef3c7;
   --green: #34a853;
   --green-soft: #e1f3e6;
-  --navy: #0f172a;
+  --navy: #0a2463;
   --radius-xl: 40px;
   --radius-lg: 28px;
   --radius-md: 20px;
@@ -184,7 +184,7 @@ h2 { font-size: clamp(32px, 4.5vw, 56px); line-height: 1.15; letter-spacing: -.0
   transition: transform .3s, box-shadow .3s;
 }
 .project-large .project-image { min-height: 420px; }
-.project-image:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0, 0, 0, .4); }
+.project-image:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(4, 16, 60, .45); }
 .project-image-one { background: var(--blue); color: #fff; }
 .project-image-two { background: var(--yellow); color: var(--ink); }
 .project-image-three { background: var(--green); color: #fff; }
