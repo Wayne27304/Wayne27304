@@ -168,6 +168,9 @@ h2 { font-size: clamp(32px, 4.5vw, 56px); line-height: 1.15; letter-spacing: -.0
 .social-instagram { background: var(--red-soft); color: #a50e0e; }
 .social-tiktok { background: var(--yellow-soft); color: #7a5600; }
 .social-discord { background: var(--green-soft); color: #0d652d; }
+.discord-presence { display: block; width: fit-content; max-width: 100%; border-radius: var(--radius-md); transition: transform .25s, box-shadow .25s; }
+.discord-presence:hover { transform: translateY(-4px); box-shadow: var(--shadow-2); }
+.discord-presence img { width: 100%; max-width: 410px; height: auto; border-radius: var(--radius-md); }
 
 /* ---------- Work (bento) ---------- */
 .work { color: #fff; }
@@ -207,6 +210,31 @@ h2 { font-size: clamp(32px, 4.5vw, 56px); line-height: 1.15; letter-spacing: -.0
 }
 .project-image:hover .project-arrow { transform: rotate(45deg) scale(1.08); }
 
+/* ---------- Friends ---------- */
+.friends { padding-top: 40px; }
+.friend-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+.friend-card {
+  display: flex; align-items: center; gap: 16px; padding: 20px 22px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  transition: transform .25s, background .25s, border-color .25s;
+}
+.friend-card:hover { transform: translateY(-4px); background: rgba(255, 255, 255, .1); }
+.friend-avatar {
+  flex: none; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px;
+  font-size: 20px; font-weight: 900; color: #06163f;
+}
+.friend-blue .friend-avatar { background: #8ab4f8; }
+.friend-yellow .friend-avatar { background: var(--yellow); }
+.friend-green .friend-avatar { background: #81c995; }
+.friend-info { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.friend-info strong { font-size: 17px; font-weight: 700; line-height: 1.3; }
+.friend-info small { color: var(--ink-2); font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.friend-card i {
+  flex: none; font-style: normal; display: grid; place-items: center; width: 36px; height: 36px;
+  border-radius: 50%; background: rgba(255, 255, 255, .1); transition: transform .25s, background .25s;
+}
+.friend-card:hover i { transform: rotate(45deg); background: var(--blue); }
+
 /* ---------- Contact ---------- */
 .contact { padding-block: 24px 96px; }
 .contact-panel {
@@ -242,6 +270,7 @@ h2 { font-size: clamp(32px, 4.5vw, 56px); line-height: 1.15; letter-spacing: -.0
   .hero-visual { order: -1; max-width: 400px; margin-inline: auto; }
   .scroll-cue { display: none; }
   .project-grid { grid-template-columns: 1fr; }
+  .friend-grid { grid-template-columns: 1fr; }
   .project-image, .project-large .project-image { min-height: 320px; padding: 28px; }
   .work { border-radius: 36px; }
   .contact { padding-block: 16px 64px; }
