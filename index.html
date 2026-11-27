@@ -382,18 +382,12 @@
             gap: 13px;
             margin-bottom: 16px;
         }
-
+        }
         .friend-avatar {
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: #e8f0fe;
-            color: var(--blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 18px;
+            object-fit: cover;
             flex-shrink: 0;
         }
 
@@ -722,8 +716,12 @@
                     <!-- Friend 1 -->
                     <div class="card friend-card">
 
-                        <div class="friend-top">
-                            <div class="friend-avatar">Co2</div>
+
+                        <img
+                            src="images/co2.png"
+                            alt="Co2 Avatar"
+                            class="friend-avatar"
+                        >
 
                             <div>
                                 <div class="friend-name">二氧化碳</div>
@@ -732,11 +730,11 @@
                         </div>
 
                         <p>
-                            因為我覺得自己就像空氣裡的二氧化碳： 到處都有、不太起眼，但少了我植物會不開心。 平常喜歡在網路上東摸西摸，研究各種奇怪的東西。
+                            名字叫 co2，因為我覺得自己就像空氣裡的二氧化碳。
                         </p>
 
                         <a class="card-link"
-                           href="https://example.com"
+                           href="https://weiwei54321.github.io/"
                            target="_blank"
                            rel="noopener noreferrer">
                             前往網站 →
@@ -808,12 +806,6 @@
                     <p>Discord Presence</p>
                 </div>
 
-                <div class="card discord-card">
-                    <h3>Wayne's Discord</h3>
-
-                    <p>
-                        Discord 個人狀態與活動資訊
-                    </p>
 
                     <a href="https://discord.com/users/1515607700816265316"
                        target="_blank"
