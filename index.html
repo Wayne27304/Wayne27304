@@ -33,159 +33,166 @@
       </div>
     </header>
 
-    <main class="page">
-      <!-- ============ HERO / 個人資料卡 ============ -->
-      <section class="hero" id="home">
-        <article class="profile-card profile-main">
-          <div class="profile-banner">
-            <span class="hero-index" data-i18n="hero.index">你好阿 · 2026</span>
-          </div>
+    <main class="page" id="home">
+      <div class="modal">
 
-          <div class="profile-head">
+        <!-- ================= 左欄：個人資料 ================= -->
+        <aside class="profile-col">
+          <article class="profile-card">
+            <div class="profile-banner"></div>
+
             <div class="avatar-wrap">
               <img class="avatar hero-image" src="images/wayne.png" data-i18n-alt="hero.alt" alt="Wayne 的個人照片：一隻穿著西裝的貓咪">
-              <span class="dot dot-online" aria-hidden="true"></span>
+              <span class="dot" aria-hidden="true"></span>
             </div>
-            <div class="profile-names">
-              <p class="display-name">Wayne</p>
-              <p class="username">wayne273043</p>
-            </div>
-            <div class="badges" aria-hidden="true">
-              <span class="badge badge-blue">Python</span>
-              <span class="badge badge-yellow">Discord</span>
-              <span class="badge badge-green">Minecraft</span>
-              <span class="badge badge-red">Hosting</span>
-            </div>
-          </div>
+            <p class="status-bubble"><span data-i18n="hero.eyebrow">嗨，我是 Wayne</span></p>
 
-          <div class="profile-body">
-            <p class="status-bubble"><span class="dot dot-online dot-small" aria-hidden="true"></span> <span data-i18n="hero.eyebrow">嗨，我是 Wayne</span></p>
-            <div class="panel hero-panel">
-              <h1 data-i18n-html="hero.title">用喜歡的方式，<br>好好<span class="outline-text">生活</span></h1>
+            <div class="profile-info">
+              <div class="profile-names">
+                <p class="display-name">Wayne</p>
+                <p class="username">wayne273043</p>
+              </div>
+
+              <h1 class="tagline" data-i18n-html="hero.title">用喜歡的方式，<br>好好<span class="outline-text">生活</span></h1>
               <p class="hero-description" data-i18n-html="hero.desc">我正在努力學習Python<br class="desktop-break">但大部分的作品還是AI寫的</p>
+
+              <div class="badges" aria-hidden="true">
+                <span class="badge badge-blue">Python</span>
+                <span class="badge badge-yellow">Discord</span>
+                <span class="badge badge-green">Minecraft</span>
+                <span class="badge badge-red">Hosting</span>
+              </div>
+
               <div class="hero-actions">
                 <a class="button button-primary" href="#work"><span data-i18n="hero.cta1">看看我的作品</span> <span aria-hidden="true">↓</span></a>
                 <a class="button button-secondary" href="#about"><span data-i18n="hero.cta2">多認識我一點</span> <span aria-hidden="true">↗</span></a>
               </div>
+
+              <section class="profile-section" id="about">
+                <p class="label" data-i18n="about.eyebrow">01 / 關於我</p>
+                <h2 class="about-title" data-i18n-html="about.title">你好，<br>很高興認識你。</h2>
+                <p class="about-lead" data-i18n="about.lead">我是 Wayne，歡迎來到我的個人網站。</p>
+                <p class="body-copy" data-i18n="about.body">這裡整理了我的作品、興趣和日常，也放上了常用的社群連結</p>
+              </section>
+
+              <section class="profile-section">
+                <p class="label">成為成員時間</p>
+                <p class="member-since"><span class="member-icon" aria-hidden="true"></span><span data-i18n="hero.index">你好阿 · 2026</span></p>
+              </section>
+
+              <section class="profile-section">
+                <p class="label">連結</p>
+                <div class="social-links" data-i18n-aria="aria.social" aria-label="社群連結">
+                  <a class="social-card social-github" href="https://github.com/Wayne27304" target="_blank" rel="noopener noreferrer"><b class="conn-icon" aria-hidden="true">GH</b><span>GitHub</span><i aria-hidden="true">↗</i></a>
+                  <a class="social-card social-instagram" href="https://www.instagram.com/wayne27304/" target="_blank" rel="noopener noreferrer"><b class="conn-icon" aria-hidden="true">IG</b><span>Instagram</span><i aria-hidden="true">↗</i></a>
+                  <a class="social-card social-tiktok" href="https://www.tiktok.com/@wayne273043" target="_blank" rel="noopener noreferrer"><b class="conn-icon" aria-hidden="true">TT</b><span>TikTok</span><i aria-hidden="true">↗</i></a>
+                  <a class="social-card social-discord" href="https://discord.com/users/wayne273043" target="_blank" rel="noopener noreferrer"><b class="conn-icon" aria-hidden="true">DC</b><span>Discord</span><i aria-hidden="true">↗</i></a>
+                </div>
+              </section>
             </div>
-          </div>
-        </article>
-        <a class="scroll-cue" href="#about"><span></span> <b data-i18n="hero.scroll">往下探索</b></a>
-      </section>
+          </article>
+          <a class="scroll-cue" href="#work"><span></span> <b data-i18n="hero.scroll">往下探索</b></a>
+        </aside>
 
-      <!-- ============ ABOUT ============ -->
-      <section class="block" id="about">
-        <article class="profile-card card-pad">
-          <div class="card-heading">
-            <p class="eyebrow" data-i18n="about.eyebrow">01 / 關於我</p>
-            <h2 data-i18n-html="about.title">你好，<br>很高興認識你。</h2>
-          </div>
+        <!-- ================= 右欄：小工具 ================= -->
+        <div class="widgets-col">
+          <nav class="tab-bar" aria-hidden="true">
+            <a class="tab-active" href="#work">公告欄</a>
+            <a href="#activity">動態</a>
+            <a href="#friends">友站</a>
+            <a href="#contact">聯絡</a>
+          </nav>
 
-          <div class="panel">
-            <p class="about-lead" data-i18n="about.lead">我是 Wayne，歡迎來到我的個人網站。</p>
-            <p class="body-copy" data-i18n="about.body">這裡整理了我的作品、興趣和日常，也放上了常用的社群連結</p>
-          </div>
+          <!-- 作品 -->
+          <section class="widget work" id="work">
+            <div class="widget-head">
+              <p class="label" data-i18n="work.eyebrow">02 / 精選作品</p>
+              <h2 data-i18n="work.title">我的精選作品</h2>
+            </div>
+            <div class="project-list">
+              <article class="project-card project-large">
+                <a class="project-image project-image-one" href="https://wayhost.cc.cd" target="_blank" rel="noopener noreferrer" data-i18n-aria="wayhost.aria" aria-label="Wayhost 託管服務">
+                  <span class="project-cover" aria-hidden="true">W</span>
+                  <div class="project-body">
+                    <div class="project-meta"><h3>Wayhost</h3><p data-i18n="wayhost.desc">免費的24/7託管服務</p></div>
+                    <span class="project-tag" data-i18n="wayhost.tag">免費的24/7託管</span>
+                  </div>
+                  <span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+              </article>
 
-          <div class="social-links" data-i18n-aria="aria.social" aria-label="社群連結">
-            <a class="social-card social-github" href="https://github.com/Wayne27304" target="_blank" rel="noopener noreferrer"><b class="conn-icon" aria-hidden="true">GH</b><span>GitHub</span><i aria-hidden="true">↗</i></a>
-            <a class="social-card social-instagram" href="https://www.instagram.com/wayne27304/" target="_blank" rel="noopener noreferrer"><b class="conn-icon" aria-hidden="true">IG</b><span>Instagram</span><i aria-hidden="true">↗</i></a>
-            <a class="social-card social-tiktok" href="https://www.tiktok.com/@wayne273043" target="_blank" rel="noopener noreferrer"><b class="conn-icon" aria-hidden="true">TT</b><span>TikTok</span><i aria-hidden="true">↗</i></a>
-            <a class="social-card social-discord" href="https://discord.com/users/wayne273043" target="_blank" rel="noopener noreferrer"><b class="conn-icon" aria-hidden="true">DC</b><span>Discord</span><i aria-hidden="true">↗</i></a>
-          </div>
+              <article class="project-card">
+                <a class="project-image project-image-two" href="https://github.com/Wayne27304/NukeBot/tree/main" target="_blank" rel="noopener noreferrer" data-i18n-aria="nuke.aria" aria-label="炸群機器人">
+                  <span class="project-cover" aria-hidden="true">N</span>
+                  <div class="project-body">
+                    <div class="project-meta"><h3 data-i18n="nuke.title">炸群機器人</h3><p data-i18n="nuke.desc">顧名思義，就是Discord上的炸群機器人</p></div>
+                    <span class="project-tag" data-i18n="nuke.tag">Discord上的炸群機器人</span>
+                  </div>
+                  <span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+              </article>
 
-          <a class="discord-presence" href="https://discord.com/users/1515607700816265316" target="_blank" rel="noopener noreferrer">
-            <img src="https://lanyard.cnrad.dev/api/1515607700816265316?showDisplayName=true" alt="Discord 即時狀態" loading="lazy" width="410" height="140">
-          </a>
-        </article>
-      </section>
+              <article class="project-card">
+                <a class="project-image project-image-three" href="https://github.com/Wayne27304/CatMin-Launcher" target="_blank" rel="noopener noreferrer" aria-label="CatMin">
+                  <span class="project-cover" aria-hidden="true">C</span>
+                  <div class="project-body">
+                    <div class="project-meta"><h3>CatMin</h3><p data-i18n="cat.desc">簡單的Minecraft啟動器</p></div>
+                    <span class="project-tag">MINECRAFT LAUNCHER</span>
+                  </div>
+                  <span class="project-arrow" aria-hidden="true">↗</span>
+                </a>
+              </article>
+            </div>
+          </section>
 
-      <!-- ============ WORK ============ -->
-      <section class="block work" id="work">
-        <article class="profile-card card-pad">
-          <div class="card-heading">
-            <p class="eyebrow" data-i18n="work.eyebrow">02 / 精選作品</p>
-            <h2 data-i18n="work.title">我的精選作品</h2>
-          </div>
-
-          <div class="project-grid">
-            <article class="project-card project-large">
-              <a class="project-image project-image-one" href="https://wayhost.cc.cd" target="_blank" rel="noopener noreferrer" data-i18n-aria="wayhost.aria" aria-label="Wayhost 託管服務">
-                <span class="project-banner"><span class="project-big" aria-hidden="true">Wayhost</span><span class="project-arrow" aria-hidden="true">↗</span></span>
-                <span class="project-body">
-                  <span class="project-tag" data-i18n="wayhost.tag">免費的24/7託管</span>
-                  <span class="project-meta"><h3>Wayhost</h3><p data-i18n="wayhost.desc">免費的24/7託管服務</p></span>
-                </span>
-              </a>
-            </article>
-
-            <article class="project-card">
-              <a class="project-image project-image-two" href="https://github.com/Wayne27304/NukeBot/tree/main" target="_blank" rel="noopener noreferrer" data-i18n-aria="nuke.aria" aria-label="炸群機器人">
-                <span class="project-banner"><span class="project-big" aria-hidden="true">NukeBot</span><span class="project-arrow" aria-hidden="true">↗</span></span>
-                <span class="project-body">
-                  <span class="project-tag" data-i18n="nuke.tag">Discord上的炸群機器人</span>
-                  <span class="project-meta"><h3 data-i18n="nuke.title">炸群機器人</h3><p data-i18n="nuke.desc">顧名思義，就是Discord上的炸群機器人</p></span>
-                </span>
-              </a>
-            </article>
-
-            <article class="project-card">
-              <a class="project-image project-image-three" href="https://github.com/Wayne27304/CatMin-Launcher" target="_blank" rel="noopener noreferrer" aria-label="CatMin">
-                <span class="project-banner"><span class="project-big" aria-hidden="true">CatMin</span><span class="project-arrow" aria-hidden="true">↗</span></span>
-                <span class="project-body">
-                  <span class="project-tag">MINECRAFT LAUNCHER</span>
-                  <span class="project-meta"><h3>CatMin</h3><p data-i18n="cat.desc">簡單的Minecraft啟動器</p></span>
-                </span>
-              </a>
-            </article>
-          </div>
-        </article>
-      </section>
-
-      <!-- ============ FRIENDS ============ -->
-      <section class="block friends" id="friends">
-        <article class="profile-card card-pad">
-          <div class="card-heading">
-            <p class="eyebrow">友站 / FRIENDS</p>
-            <h2>我的友站</h2>
-          </div>
-
-          <div class="friend-grid">
-            <a class="friend-card friend-blue" href="https://example.com" target="_blank" rel="noopener noreferrer">
-              <span class="friend-banner" aria-hidden="true"></span>
-              <span class="friend-avatar" aria-hidden="true">友<span class="dot dot-online dot-small"></span></span>
-              <span class="friend-info"><strong>友站名稱 1</strong><small>一句話介紹這個網站</small></span>
-              <span class="friend-visit">拜訪 ↗</span>
+          <!-- 動態（Discord 即時狀態） -->
+          <section class="widget" id="activity">
+            <div class="widget-head">
+              <p class="label">動態</p>
+              <h2>Discord 即時狀態</h2>
+            </div>
+            <a class="discord-presence" href="https://discord.com/users/1515607700816265316" target="_blank" rel="noopener noreferrer">
+              <img src="https://lanyard.cnrad.dev/api/1515607700816265316?showDisplayName=true" alt="Discord 即時狀態" loading="lazy" width="410" height="140">
             </a>
-            <a class="friend-card friend-yellow" href="https://example.com" target="_blank" rel="noopener noreferrer">
-              <span class="friend-banner" aria-hidden="true"></span>
-              <span class="friend-avatar" aria-hidden="true">友<span class="dot dot-online dot-small"></span></span>
-              <span class="friend-info"><strong>友站名稱 2</strong><small>一句話介紹這個網站</small></span>
-              <span class="friend-visit">拜訪 ↗</span>
-            </a>
-            <a class="friend-card friend-green" href="https://example.com" target="_blank" rel="noopener noreferrer">
-              <span class="friend-banner" aria-hidden="true"></span>
-              <span class="friend-avatar" aria-hidden="true">友<span class="dot dot-online dot-small"></span></span>
-              <span class="friend-info"><strong>友站名稱 3</strong><small>一句話介紹這個網站</small></span>
-              <span class="friend-visit">拜訪 ↗</span>
-            </a>
-          </div>
-        </article>
-      </section>
+          </section>
 
-      <!-- ============ CONTACT ============ -->
-      <section class="block contact" id="contact">
-        <article class="profile-card card-pad contact-card">
-          <div class="card-heading">
-            <p class="eyebrow" data-i18n="contact.eyebrow">03 / 聯絡我</p>
-            <h2 data-i18n-html="contact.title">有個好點子？<br>我們來聊聊。</h2>
-          </div>
-          <div class="panel">
+          <!-- 友站 -->
+          <section class="widget friends" id="friends">
+            <div class="widget-head">
+              <p class="label">友站 / FRIENDS</p>
+              <h2>我的友站</h2>
+            </div>
+            <div class="friend-grid">
+              <a class="friend-card friend-blue" href="https://example.com" target="_blank" rel="noopener noreferrer">
+                <span class="friend-avatar" aria-hidden="true">友<span class="dot dot-small"></span></span>
+                <span class="friend-info"><strong>友站名稱 1</strong><small>一句話介紹這個網站</small></span>
+                <span class="friend-visit">拜訪 ↗</span>
+              </a>
+              <a class="friend-card friend-yellow" href="https://example.com" target="_blank" rel="noopener noreferrer">
+                <span class="friend-avatar" aria-hidden="true">友<span class="dot dot-small"></span></span>
+                <span class="friend-info"><strong>友站名稱 2</strong><small>一句話介紹這個網站</small></span>
+                <span class="friend-visit">拜訪 ↗</span>
+              </a>
+              <a class="friend-card friend-green" href="https://example.com" target="_blank" rel="noopener noreferrer">
+                <span class="friend-avatar" aria-hidden="true">友<span class="dot dot-small"></span></span>
+                <span class="friend-info"><strong>友站名稱 3</strong><small>一句話介紹這個網站</small></span>
+                <span class="friend-visit">拜訪 ↗</span>
+              </a>
+            </div>
+          </section>
+
+          <!-- 聯絡 -->
+          <section class="widget contact" id="contact">
+            <div class="widget-head">
+              <p class="label" data-i18n="contact.eyebrow">03 / 聯絡我</p>
+              <h2 data-i18n-html="contact.title">有個好點子？<br>我們來聊聊。</h2>
+            </div>
             <p class="contact-text" data-i18n="contact.text">不論是合作提案、工作機會，或只是想打聲招呼，我都很期待收到你的訊息。</p>
             <a class="email-link" href="mailto:hello@wayne227304.dpdns.org">hello@wayne227304.dpdns.org <span aria-hidden="true">↗</span></a>
             <span class="contact-note" data-i18n-html="contact.note">或透過<a href="#about">社群連結</a>跟我聊天</span>
-          </div>
-        </article>
-      </section>
+          </section>
+        </div>
+      </div>
     </main>
 
     <footer class="site-footer">
